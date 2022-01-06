@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Routing;
+using Web_Final_asp_mvc_6.Models;
+
+namespace Web_Final_asp_mvc_6
+{
+    public class MvcApplication : System.Web.HttpApplication
+    {
+        protected void Application_Start()
+        {
+            using(DBContext db = new DBContext())
+            {
+                db.Database.CreateIfNotExists();
+            }
+            AreaRegistration.RegisterAllAreas();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+        }
+    }
+}
